@@ -1,4 +1,100 @@
 // Business Logic for AddressBook ---------
+// function Task(taskName, status) {
+//   this.taskName = taskName;
+//   this.status = status;
+// }
+
+// function TaskList() {
+//   this.tasks = {};
+//   this.numberOfTasks = 0;
+// }
+
+// function TransportOption(distance, conditions) {
+//   this.distance = distance;
+//   this.conditions = conditions;
+// }
+
+//  let car = new TransportOption (15, "moderate");
+//  let bus = new TransportOption (5, "safe");
+//  let walk = new TransportOption(1, "dangerous");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// User Interface Logic ---------
+let tasklist = new TaskList();
+
+
+$(document).ready(function() { 
+  $("form#side").submit(function(event) {
+    event.preventDefault();
+    const input = $("#side1").val();
+
+    $("#work-responses").html('<input type="checkbox" name="tasks-to-do" value="walk">' + input + '<br>');
+
+  });
+});
+
+
+
+$(document).ready(function(){
+  $("form#transportation_survey").submit(function(event){
+    event.preventDefault();
+    $("input:checkbox[name=tasks-to-do]:checked").each(function(){
+
+      const workTransportationMode = $(this).val();
+      $('#work-responses').append(workTransportationMode + "<br>");
+    });
+  });
+});
+
+ //<input type="checkbox" name="work-transportation" value="walk">this is where TaskName will go.<br></br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Business Logic for AddressBook ---------
 function AddressBook() {
   this.contacts = {};
   this.currentId = 0;
@@ -55,9 +151,15 @@ function displayContactDetails(addressBookToDisplay) {
 
 function attachContactListeners() {
   $("ul#contacts").on("click", "li", function() {
-    console.log("The id of this <li> is " + this.id + ".");
+    showContact(this.id);
+  });
+  $("#buttons").on("click", ".deleteButton", function() {
+    addressBook.deleteContact(this.id);
+    $("#show-contact").hide();
+    displayContactDetails(addressBook);
   });
 }
+
 
 $(document).ready(function() {
   attachContactListeners(); 
