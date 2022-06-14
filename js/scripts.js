@@ -16,8 +16,6 @@ function Task(taskName, status) {
 
 
 
-
-
 // User Interface Logic ---------
 let tasklist = new TaskList();
 let task = new Task("finish this thing", "nonedone");
