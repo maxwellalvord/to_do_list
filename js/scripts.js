@@ -9,13 +9,6 @@ function Task(taskName, status) {
   this.status = status;
 }
 
-
-
-
-
-
-
-
 // User Interface Logic ----------
 let tasklist = new TaskList();
 let task = new Task("finish this thing", "nonedone");
