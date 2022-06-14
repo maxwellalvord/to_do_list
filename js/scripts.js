@@ -64,11 +64,12 @@ $(document).ready(function() {
     const input = $("#side1").val();
     let task = new Task(input, "nonedone");
     tasklist.addTask(task);
+     $("#work-responses").append('<input type="checkbox" name="tasks-to-do" value="'+tasklist.tasks[tasklist.numberOfTasks]+'">' + tasklist.tasks[tasklist.numberOfTasks].taskName + '<br>');
     for (let i = 0; i<5; i++){
       console.log(i);
       //$('#work-responses').append(tasklist.tasks[tasklist.numberOfTasks] + "<br>");
-      $("#work-responses").html('<input type="checkbox" name="tasks-to-do" value="'+i+'">' + tasklist.tasks[tasklist.numberOfTasks].taskName + '<br>');
-      $("#work-responses").append(workTransportationMode + "<br>")
+      //$("#work-responses").html('<input type="checkbox" name="tasks-to-do" value="'+i+'">' + tasklist.tasks[tasklist.numberOfTasks].taskName + '<br>');
+     
     }
   });
 });
