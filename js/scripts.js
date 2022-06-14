@@ -4,6 +4,48 @@ function TaskList() {
   this.numberOfTasks = 0;
 }
 
+TaskList.prototype.assignId = function() {
+  this.numberOfTasks += 1;
+  return this.numberOfTasks;
+};
+
+TaskList.prototype.addTask = function(task) {
+  task.id = this.assignId();
+  this.tasks[task.id] = task;
+};
+
+TaskList.prototype.findTask = function(id) {
+  if (this.tasks[id] != undefined) {
+    return this.tasks[id];
+  }
+  return false;
+};
+
+TaskList.prototype.deleteTask = function(id) {
+  if (this.tasks[id] === undefined) {
+    return false;
+  }
+  delete this.tasks[id];
+  return true;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function Task(taskName, status) {
   this.taskName = taskName;
   this.status = status;
@@ -11,8 +53,15 @@ function Task(taskName, status) {
 
 // User Interface Logic ----------
 let tasklist = new TaskList();
-let task = new Task("finish this thing", "nonedone");
-console.log(task.status);
+let task1 = new Task("finish this thing", "nonedone");
+let task2 = new Task("finish something else", "nonedone");
+console.log(task1.status);
+tasklist.addTask(task1);
+tasklist.addTask(task2);
+console.log(tasklist.numberOfTasks);
+console.log(task1.id);
+console.log(task2.id);
+
 
 
 $(document).ready(function() { 
@@ -28,7 +77,6 @@ $(document).ready(function() {
 
   });
 });
-
 
 
 $(document).ready(function(){
