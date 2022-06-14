@@ -1,26 +1,13 @@
-// Business Logic for AddressBook ---------
-// function Task(taskName, status) {
-//   this.taskName = taskName;
-//   this.status = status;
-// }
+//Business Logic for AddressBook ---------
+function TaskList() {
+  this.tasks = {};
+  this.numberOfTasks = 0;
+}
 
-// function TaskList() {
-//   this.tasks = {};
-//   this.numberOfTasks = 0;
-// }
-
-// function TransportOption(distance, conditions) {
-//   this.distance = distance;
-//   this.conditions = conditions;
-// }
-
-//  let car = new TransportOption (15, "moderate");
-//  let bus = new TransportOption (5, "safe");
-//  let walk = new TransportOption(1, "dangerous");
-
-
-
-
+function Task(taskName, status) {
+  this.taskName = taskName;
+  this.status = status;
+}
 
 
 
@@ -33,14 +20,20 @@
 
 // User Interface Logic ---------
 let tasklist = new TaskList();
+let task = new Task("finish this thing", "nonedone");
+console.log(task.status);
 
 
 $(document).ready(function() { 
   $("form#side").submit(function(event) {
     event.preventDefault();
     const input = $("#side1").val();
-
-    $("#work-responses").html('<input type="checkbox" name="tasks-to-do" value="walk">' + input + '<br>');
+    let task1 = new Task(input, "nonedone");
+    let numtasks = tasklist.numberOfTasks;
+    console.log(numtasks);
+    tasklist.numberOfTasks++;
+    console.log(tasklist.numberOfTasks);
+    $("#work-responses").html('<input type="checkbox" name="tasks-to-do" value="walk">' + task1.taskName + '<br>');
 
   });
 });
@@ -57,9 +50,6 @@ $(document).ready(function(){
     });
   });
 });
-
- //<input type="checkbox" name="work-transportation" value="walk">this is where TaskName will go.<br></br>
-
 
 
 
